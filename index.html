@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solven Vandermirant</title>
+
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <canvas id="bgCanvas"></canvas>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="nav-toggle" id="navToggle">|||</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">Обо мне</a></li>
+            <li><a href="#character">Я</a></li>
+            <li><a href="#links">Ссылки</a></li>
+            <li><a href="#apps">Приложения</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="SOLVEN">SOLVEN</h1>
+            <h2 class="subtitle">VANDERMIRANT 
+                <button class="info-btn" onclick="showTranslation()">[ i ]</button>
+            </h2>
+            <p class="tagline" id="typewriter"></p>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" id="ageHours">0</span>
+                    <span class="stat-label">Часов в эфире</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">17</span>
+                    <span class="stat-label">Лет</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="visitors">—</span>
+                    <span class="stat-label">Посетителей</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Вниз</span>
+            <div class="line-down"></div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="section">
+            <div class="section-header">
+                <h2>Обо мне</h2>
+                <div class="line"></div>
+            </div>
+            <div class="content-grid">
+                <div class="text-content">
+                    <p>Меня зовут Solven.</p>
+                    <p>Разрабатываю приложения.</p>
+                    <p>Не люблю шум.</p>
+                </div>
+                <div class="visual-element">
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <pre><code id="typingCode">> Загрузка профиля...
+> Успешно: Solven Vandermirant
+> Статус: Онлайн</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="character" class="section character-section">
+            <div class="section-header">
+                <h2>Я — Solven</h2>
+                <div class="line"></div>
+            </div>
+            <div class="character-card">
+                <div class="character-header">
+                    <div class="character-avatar">
+                        <img src="assets/avatar.png" alt="Solven Avatar" class="real-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23111\'/><text x=\'50\' y=\'65\' font-size=\'40\' text-anchor=\'middle\' fill=\'%23ff0040\' font-family=\'Orbitron, sans-serif\' font-weight=\'bold\'>S</text></svg>'">
+                    </div>
+                    <div class="character-basic">
+                        <h3>Solven Vandermirant</h3>
+                        <p class="character-subtitle">17 лет</p>
+                    </div>
+                </div>
+                <div class="character-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Имя:</span>
+                        <span class="detail-value">Solven</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Фамилия:</span>
+                        <span class="detail-value">Vandermirant</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Возраст:</span>
+                        <span class="detail-value">17 лет</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Дата рождения:</span>
+                        <span class="detail-value">03/09/2008</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Происхождение:</span>
+                        <span class="detail-value">Пустота</span>
+                    </div>
+                </div>
+                <div class="character-stats">
+                    <div class="stat-box">
+                        <div class="stat-number" id="ageHoursFooter">0</div>
+                        <div class="stat-label">Часов в эфире</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number" id="countdown">...</div>
+                        <div class="stat-label">До дня рождения</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number" id="visitorsFooter">—</div>
+                        <div class="stat-label">Посетителей</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="links" class="section">
+            <div class="section-header">
+                <h2>Ссылки</h2>
+                <div class="line"></div>
+            </div>
+            <div class="links-grid">
+                <a href="https://t.me/s0lvenne_s" target="_blank" class="link-card telegram">
+                    <div class="link-icon">T</div>
+                    <div class="link-content">
+                        <h3>Telegram</h3>
+                        <p>@s0lvenne_s</p>
+                    </div>
+                </a>
+                <a href="https://discord.gg/QmkqQpEjz9" target="_blank" class="link-card discord">
+                    <div class="link-icon">D</div>
+                    <div class="link-content">
+                        <h3>Discord</h3>
+                        <p>Сервер</p>
+                    </div>
+                </a>
+                <a href="https://youtube.com/@s0lvennes?si=WbMQdJ1B1XQv-muh" target="_blank" class="link-card youtube">
+                    <div class="link-icon">Y</div>
+                    <div class="link-content">
+                        <h3>YouTube</h3>
+                        <p>@s0lvennes</p>
+                    </div>
+                </a>
+            </div>
+            <p class="footer-email">support.solven@gmail.com</p>
+        </section>
+
+        <section id="apps" class="section">
+            <div class="section-header">
+                <h2>Приложения</h2>
+                <div class="line"></div>
+            </div>
+            <div class="apps-grid" id="appsContainer"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Solven Vandermirant</p>
+        </div>
+    </footer>
+
+    <!-- Модальные окна -->
+    <div id="translateModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeTranslate()">X</button>
+            <h2>О имени</h2>
+            <div class="modal-text">
+                <p><strong>Solven</strong> — от "solve" (решать) + "seven" (7).<br>
+                Число 7 — символ одиночества, поиска, пустоты.</p>
+                <p><strong>Vandermirant</strong> — Когда-то была крутой. Потом исчезла в пустоте.<br>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="appModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeAppInfo()">X</button>
+            <h2 id="appTitle"></h2>
+            <div id="appInfo" class="modal-text"></div>
+        </div>
+    </div>
+
+    <div id="tripMessage" class="trip-message">ты че обкуренный?</div>
+
+    <script src="js/blackhole.js"></script>
+    <script src="js/apps.js"></script>
+    <script src="js/terminal.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
