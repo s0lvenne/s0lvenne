@@ -12,7 +12,6 @@ window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
     const diff = currentScrollY - lastScrollY;
 
-    // Если пауза между скроллами больше 1.5 секунды — сбрасываем таймер
     if (now - lastScrollTime > 1500) {
         erraticStartTime = null;
         directionChanges = 0;
@@ -30,13 +29,11 @@ window.addEventListener('scroll', () => {
         }
     }
 
-    // Если скроллит непрерывно 60 секунд (60000 мс) и часто менял направление
     if (erraticStartTime && (now - erraticStartTime >= 60000) && directionChanges > 30) {
         const msg = document.getElementById('tripMessage');
         msg.classList.add('show');
         setTimeout(() => msg.classList.remove('show'), 3000);
         
-        // Сброс
         erraticStartTime = null;
         directionChanges = 0;
     }
@@ -61,7 +58,6 @@ function showAppInfo(appId) {
     const title = document.getElementById('appTitle');
     const info = document.getElementById('appInfo');
     
-    // Ищем приложение в базе из apps.js
     const app = myApps.find(a => a.id === appId);
     if (app) {
         title.textContent = app.name;
@@ -116,6 +112,21 @@ function loadRealVisitors() {
         });
 }
 
+// === Безумная ссылка ===
+const crazyChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&!?~';
+
+function randomHash(len) {
+    let result = '';
+    for (let i = 0; i < len; i++) {
+        result += crazyChars[Math.floor(Math.random() * crazyChars.length)];
+    }
+    return result;
+}
+
+setInterval(() => {
+    history.replaceState(null, '', '#' + randomHash(12));
+}, 80);
+
 // === Инициализация ===
 document.addEventListener("DOMContentLoaded", () => {
     updateAgeInHours();
@@ -123,7 +134,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(updateCountdown, 60000);
     loadRealVisitors();
     
-    // Запуск рендера приложений
     if (typeof renderApps === 'function') {
         renderApps();
     }
