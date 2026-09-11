@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru" data-accent="red">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#000000">
+
+<title>Solven Vandermirant</title>
+<meta name="description" content="Solven Vandermirant — личный сайт: приложения, проекты, контакты.">
+<link rel="canonical" href="https://solven.example/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Solven Vandermirant">
+<meta property="og:description" content="Разрабатываю приложения. Не люблю шум.">
+<meta property="og:url" content="https://solven.example/">
+<meta property="og:image" content="assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Orbitron:wght@500;700;900&display=swap">
+<link rel="stylesheet" href="css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Solven Vandermirant",
+  "alternateName": "Solven",
+  "birthDate": "2008-09-03",
+  "url": "https://solven.example/",
+  "email": "mailto:support.solven@gmail.com",
+  "sameAs": [
+    "https://t.me/s0lvenne_s",
+    "https://youtube.com/@s0lvennes",
+    "https://discord.gg/QmkqQpEjz9"
+  ]
+}
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main" data-txt="skipLink"></a>
+
+<div class="progress" id="progress" aria-hidden="true"><i></i></div>
+
+<!-- фон: чёрная дыра (WebGL) -->
+<canvas id="bgCanvas" aria-hidden="true"></canvas>
+<div class="grid-overlay" aria-hidden="true"></div>
+<div class="noise" aria-hidden="true"></div>
+
+<!-- ── ШАПКА ─────────────────────────────────────────────────── -->
+<header class="nav" id="nav">
+    <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="15" height="15">
+                <text x="12" y="12" text-anchor="middle" dominant-baseline="central"
+                      font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold"
+                      fill="currentColor">S</text>
+            </svg>
+        </span>
+        <span class="brand-text">SOLVEN</span>
+    </a>
+
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="navLinks" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav-links" id="navLinks" aria-label="Основная навигация">
+        <ul></ul>
+    </nav>
+
+    <div class="accents" id="accents" role="group" aria-label="Цвет акцента"></div>
+</header>
+
+<main id="main">
+
+    <!-- ── ГЛАВНЫЙ ЭКРАН ─────────────────────────────────────── -->
+    <section class="hero" id="top">
+        <div class="hero-inner">
+            <p class="hero-kicker"><span class="pulse"></span> <span id="heroStatus">Онлайн</span></p>
+
+            <h1 class="glitch" id="heroTitle" data-text="SOLVEN">SOLVEN</h1>
+
+            <h2 class="subtitle">
+                <span id="heroSubtitle">VANDERMIRANT</span>
+                <button class="info-btn" id="infoBtn" aria-label="Что значит имя">[ i ]</button>
+            </h2>
+
+            <p class="tagline"><span id="typewriter"></span><span class="cursor" aria-hidden="true">_</span></p>
+
+            <div class="hero-actions" id="heroActions"></div>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" id="statHours" data-count="0">0</span>
+                    <span class="stat-label" data-txt="stats.hours"></span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="statAge">—</span>
+                    <span class="stat-label" data-txt="stats.age"></span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="statProjects">0</span>
+                    <span class="stat-label" data-txt="stats.projects"></span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="statVisitors">—</span>
+                    <span class="stat-label" data-txt="stats.visitors"></span>
+                </div>
+            </div>
+        </div>
+
+        <a class="scroll-indicator" href="#about" aria-label="Прокрутить вниз">
+            <span data-txt="scrollDown"></span>
+            <i class="line-down"></i>
+        </a>
+    </section>
+
+    <!-- ── ОБО МНЕ ───────────────────────────────────────────── -->
+    <section class="section" id="about" data-nav="Обо мне">
+        <div class="section-head">
+            <h2 id="aboutTitle">Обо мне</h2>
+            <span class="line"></span>
+        </div>
+
+        <div class="about-grid">
+            <div class="text-block reveal" id="aboutText"></div>
+            <div class="code-block reveal">
+                <div class="code-head">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="code-title" data-txt="codeTitle"></span>
+                </div>
+                <pre><code id="typingCode"></code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── ПРОФИЛЬ ───────────────────────────────────────────── -->
+    <section class="section" id="profile" data-nav="Я">
+        <div class="section-head">
+            <h2>Я — Solven</h2>
+            <span class="line"></span>
+        </div>
+
+        <div class="profile-card reveal">
+            <div class="profile-head">
+                <div class="avatar-ring">
+                    <img id="avatar" src="assets/avatar.png" alt="" data-txt-alt="avatarAlt" width="132" height="132" decoding="async">
+                </div>
+                <div class="profile-basic">
+                    <h3 id="profileName">Solven Vandermirant</h3>
+                    <p class="profile-sub"><span id="profileAge">17</span> лет · <span class="muted" id="profileOrigin">Пустота</span></p>
+                    <div class="chips" id="profileChips"></div>
+                </div>
+            </div>
+
+            <div class="detail-grid" id="profileRows"></div>
+
+            <div class="stat-boxes">
+                <div class="stat-box">
+                    <div class="stat-number" id="statHours2">0</div>
+                    <div class="stat-label" data-txt="stats.hours"></div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="countdown">…</div>
+                    <div class="stat-label" data-txt="stats.birthday"></div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="statVisitors2">—</div>
+                    <div class="stat-label" data-txt="stats.visitors"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── НАВЫКИ ────────────────────────────────────────────── -->
+    <section class="section" id="skills" data-nav="Навыки" hidden>
+        <div class="section-head">
+            <h2 id="skillsTitle">Навыки</h2>
+            <span class="line"></span>
+        </div>
+        <div class="skills-grid" id="skillsGrid"></div>
+    </section>
+
+    <!-- ── ПРОЕКТЫ ───────────────────────────────────────────── -->
+    <section class="section" id="projects" data-nav="Проекты" hidden>
+        <div class="section-head">
+            <h2 id="projectsTitle">Проекты</h2>
+            <span class="line"></span>
+        </div>
+        <div class="apps-grid" id="appsContainer"></div>
+    </section>
+
+    <!-- ── ПУТЬ ──────────────────────────────────────────────── -->
+    <section class="section" id="timeline" data-nav="Путь" hidden>
+        <div class="section-head">
+            <h2 id="timelineTitle">Путь</h2>
+            <span class="line"></span>
+        </div>
+        <ol class="timeline" id="timelineList"></ol>
+    </section>
+
+    <!-- ── КОНТАКТЫ ──────────────────────────────────────────── -->
+    <section class="section" id="contacts" data-nav="Ссылки" hidden>
+        <div class="section-head">
+            <h2 id="contactsTitle">Ссылки</h2>
+            <span class="line"></span>
+        </div>
+        <div class="links-grid" id="contactsGrid"></div>
+        <p class="hint" data-txt="contactsHint"></p>
+    </section>
+
+    <!-- ── FAQ ───────────────────────────────────────────────── -->
+    <section class="section" id="faq" data-nav="Вопросы" hidden>
+        <div class="section-head">
+            <h2 id="faqTitle">Вопросы</h2>
+            <span class="line"></span>
+        </div>
+        <div class="faq" id="faqList"></div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <p id="footerText">© 2026 Solven Vandermirant.</p>
+        <p class="muted small" id="footerNote"></p>
+        <p class="muted small" id="sessionTimer" hidden><span data-txt="sessionTime"></span> <b id="sessionClock">00:00</b></p>
+    </div>
+</footer>
+
+<!-- ── СЛУЖЕБНОЕ ─────────────────────────────────────────────── -->
+<button class="to-top" id="toTop" data-txt-aria="up" hidden>
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4l8 8h-5v8H9v-8H4z" fill="currentColor"/></svg>
+</button>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-content">
+        <button class="modal-close" id="modalClose" data-txt-aria="close">✕</button>
+        <h2 id="modalTitle"></h2>
+        <div class="modal-text" id="modalBody"></div>
+    </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="trip" id="trip" aria-hidden="true" data-txt="egg"></div>
+
+<noscript>
+    <div class="noscript" data-txt="noscript"></div>
+</noscript>
+
+<script src="assets/content.js"></script>
+<script>
+/* Если в content.js опечатка — не оставляем пустой экран, а пишем, что случилось */
+(function () {
+    if (typeof SITE !== 'undefined') return;
+    document.addEventListener('DOMContentLoaded', function () {
+        var box = document.createElement('div');
+        box.className = 'content-error';
+        box.innerHTML = '<div class="ce-card"><h2>Сайт не запустился</h2>' +
+            '<p class="ce-title">Файл <b>assets/content.js</b> не читается — в нём синтаксическая ошибка.</p>' +
+            '<pre class="ce-detail"></pre>' +
+            '<p class="ce-tip">Частые причины: лишний символ (<code>50~</code>, <code>??</code>), ' +
+            'пропущенная запятая или незакрытая кавычка. Точная строка ошибки — в консоли (F12 → Console).</p></div>';
+        document.body.appendChild(box);
+    });
+})();
+</script>
+<script src="js/blackhole.js"></script>
+<script src="js/terminal.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
